@@ -1,8 +1,12 @@
-import { Banner } from "../../components/Banner"
+import { Banner } from "../../components/Banner";
+import AboutUs from "../../components/AboutUS";
 const Home = () => {
   return (
-    <Banner/>
-  )
+    <>
+      <Banner />
+      <AboutUs />
+    </>
+  );
 };
 
 export default Home;
