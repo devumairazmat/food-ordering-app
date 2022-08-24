@@ -20,7 +20,7 @@ router.get('/products-by-categories', async(req, res) => {
               _id: '$category',
               products: { $push: '$$ROOT'}
           }},
-          { $project: { name: '$_id', products: 1, _id: 0}}
+          { $project: { name: '$_id', products: 1, _id: 0 }}
       ])
       res.status(200).send({ data: products})
   } catch (err) {
