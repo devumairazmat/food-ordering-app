@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { ProductPreviewCard } from "../components/ProductPreviewCard";
+import { AddProduct } from "../components/AddProduct";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
@@ -32,16 +33,20 @@ function ProductsPreview() {
       .then((response) => response.json())
       .then((data) => setProducts(data?.data))
       .catch((e) => console.log(e));
-  }, []);
+  }, [])
+
+  const onAddProduct = (product) => {
+     console.log(product);
+  }
   return (
     <>
-      <div className="w-full text-white bg-black">
+      <div className="w-full text-white bg-black p-4">
         <Carousel responsive={responsive}>
           {products.length > 0 &&
             products.map((product, index) => {
               return (
                 <div className="w-full p-4">
-                  <ProductPreviewCard key={index} product={product} />
+                  <ProductPreviewCard key={index} product={product} onAddProduct={onAddProduct} />
                 </div>
               );
             })}
