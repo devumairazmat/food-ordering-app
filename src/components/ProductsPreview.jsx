@@ -1,12 +1,14 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { ProductPreviewCard } from "../components/ProductPreviewCard";
-import { AddProduct } from "../components/AddProduct";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import { useDispatch } from "react-redux";
+import  { addToCart } from "../store/cart/cartSlice";
 
 function ProductsPreview() {
   const [products, setProducts] = useState([]);
+  const dispatch = useDispatch();
 
   const responsive = {
     superLargeDesktop: {
@@ -33,11 +35,12 @@ function ProductsPreview() {
       .then((response) => response.json())
       .then((data) => setProducts(data?.data))
       .catch((e) => console.log(e));
-  }, [])
+  }, []);
 
   const onAddProduct = (product) => {
-     console.log(product);
-  }
+    dispatch(addToCart(product));
+    console.log(product);
+  };
   return (
     <>
       <div className="w-full text-white bg-black p-4">
@@ -46,7 +49,11 @@ function ProductsPreview() {
             products.map((product, index) => {
               return (
                 <div className="w-full p-4">
-                  <ProductPreviewCard key={index} product={product} onAddProduct={onAddProduct} />
+                  <ProductPreviewCard
+                    key={index}
+                    product={product}
+                    onAddProduct={onAddProduct}
+                  />
                 </div>
               );
             })}
