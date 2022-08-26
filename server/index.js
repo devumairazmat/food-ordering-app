@@ -117,7 +117,7 @@ app.post("/create-payment-intent", async (req, res) => {
       shippingPrice,
       user: "",
     });
-    await order.save();
+    // await order.save();
 
     const paymentIntent = await stripe.paymentIntents.create({
       amount: totalPrice,
