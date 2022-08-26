@@ -1,12 +1,3 @@
-import { useState } from "react";
-import { useForm } from "react-hook-form";
-import Button from "../../elements/Button";
-import { app } from "../../firebase-config";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
 const Login = () => {
     let navigate = useNavigate();
     const { register, handleSubmit } = useForm();
