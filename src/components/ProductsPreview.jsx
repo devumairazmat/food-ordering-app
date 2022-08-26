@@ -43,7 +43,7 @@ function ProductsPreview() {
   };
   return (
     <>
-      <div className="w-full text-white bg-black p-4">
+      <div className="text-white bg-black p-4">
         <Carousel responsive={responsive}>
           {products.length > 0 &&
             products.map((product, index) => {
